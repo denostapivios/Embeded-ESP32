@@ -1,2 +1,2 @@
-# Embeded-ESP32
+# Поліцейська мигалка
 Task for microcontroller ESP32
