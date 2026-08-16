@@ -1,6 +1,11 @@
-# Embeded-ESP32
-Завдання для ESP32:
-1. Поліцейська мигалка - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.3-hw-police-flasher
-2. Два світлодіоди, зовнішня кнопка та BOOT - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.4-hw-button-and-led
-3. Дослідження брязкоту контактів кнопки за допомогою логічного аналізатора та мікроконтролера - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.5-hw-button-contact-bounce-analyzer
-4. АЦП. Читання даних з Фоторезистора(LDR) - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.6-hw-adc-photoresistor
+# Реалізовано вимірювання часу спрацювання реле за допомогою ESP32.
+Для керування реле використовується один GPIO, а інший GPIO підключений до контакту реле для визначення моменту його фактичного замикання. Час подачі сигналу на реле фіксується за допомогою millis(), а момент замикання контакту визначається через апаратне переривання.
+
+Для кожного спрацювання розраховується різниця між часом увімкнення реле та моментом замикання його контакту. Результати виводяться у Serial Monitor.
+
+Проводиться 10 вимірювань, після чого обчислюється та виводиться середній час спрацювання реле.
+
+Відео виміру:
+https://youtube.com/shorts/bAzchpyp6fo?feature=share
+
+<img width="1291" height="632" alt="Знімок екрана 2026-08-16 о 20 10 52" src="https://github.com/user-attachments/assets/e12df0e8-8208-4c0d-be6b-9e9ae7e8c851" />
