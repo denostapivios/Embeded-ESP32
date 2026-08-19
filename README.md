@@ -1,6 +1,17 @@
-# Embeded-ESP32
-Завдання для ESP32:
-1. Поліцейська мигалка - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.3-hw-police-flasher
-2. Два світлодіоди, зовнішня кнопка та BOOT - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.4-hw-button-and-led
-3. Дослідження брязкоту контактів кнопки за допомогою логічного аналізатора та мікроконтролера - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.5-hw-button-contact-bounce-analyzer
-4. АЦП. Читання даних з Фоторезистора(LDR) - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.6-hw-adc-photoresistor
+#  Використання millis для керування світлодіодами за допомогою ESP32.
+
+Ми реалізували керування кількома світлодіодами з різними інтервалами мигання за допомогою millis().
+- LED1 блимає кожні 200 мс
+- LED2 блимає кожні 500 мс
+- LED3 блимає кожні 1000 мс
+
+Для кожного світлодіода створили структуру Led, яка зберігає:
+- номер піна;
+- інтервал мигання;
+- час останнього перемикання;
+- поточний стан.
+
+Функція updateLed() перевіряє, чи минув заданий інтервал, і при необхідності перемикає світлодіод між On та Off
+
+Результат на відео:
+https://youtube.com/shorts/cVrKU1mmtTo
