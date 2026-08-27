@@ -1,10 +1,21 @@
-# Embeded-ESP32
-Завдання для ESP32:
-1. Поліцейська мигалка - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.3-hw-police-flasher
-2. Два світлодіоди, зовнішня кнопка та BOOT - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.4-hw-button-and-led
-3. Дослідження брязкоту контактів кнопки за допомогою логічного аналізатора та мікроконтролера - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.5-hw-button-contact-bounce-analyzer
-4. АЦП. Читання даних з Фоторезистора(LDR) - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.6-hw-adc-photoresistor
-5. Мініпроект. Читання даних з Терморезистора - https://github.com/denostapivios/Embeded-ESP32/tree/modul-mini-project1-hw-termistor
-6. Переписано класичну логіку керування LED у стилі Embedded C++ - https://github.com/denostapivios/Embeded-ESP32/tree/modul-2.1-hw-update-police-flasher
-7. Реалізовано вимірювання часу спрацювання реле - https://github.com/denostapivios/Embeded-ESP32/tree/modul-2.2-hw-relay-module
-8. Використання millis для керування світлодіодами - https://github.com/denostapivios/Embeded-ESP32/tree/modul-2.3-hw-led-millis
+# Aпаратний таймер. Керування витяжним вентилятором
+Завдання:
+Реалізувати керування витяжним вентилятором, який кожну годину вмикається на 15 хвилин, після чого автоматично вимикається.
+- Вентилятор = двигун || реле
+- Таймери мають працювати незалежно від коду в циклі
+- Не використовувати delay() для реалізації завдання
+- Цикл повторюється без участі loop() / task
+
+**У тестовому режимі повний період становить 10 секунд, а час роботи вентилятора — 5 секунд.**
+
+Для керування витяжним вентилятором використовується ESP32 та модуль реле, до якого підключений DC-мотор. Реле керується через GPIO18 та має логіку Active LOW: рівень LOW вмикає реле, а HIGH — вимикає.
+
+Для відліку часу використовується апаратний таймер ESP32. Таймер налаштований так, щоб генерувати переривання один раз на секунду. У функції переривання onTimer() зменшується програмний лічильник secondsToSwitch, який визначає момент наступного перемикання стану вентилятора.
+
+Для зручності стани реле описані через enum class RelayState, а керування винесене в окрему функцію setRelay().
+
+Функція loop() залишається порожньою, оскільки весь цикл роботи виконується незалежно від основного циклу програми за допомогою апаратного таймера та переривання. delay() у реалізації не використовується.
+
+
+**Результат виконання:**
+https://youtube.com/shorts/bpoQzu3B21w
