@@ -1,10 +1,14 @@
-# Embeded-ESP32
-Завдання для ESP32:
-1. Поліцейська мигалка - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.3-hw-police-flasher
-2. Два світлодіоди, зовнішня кнопка та BOOT - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.4-hw-button-and-led
-3. Дослідження брязкоту контактів кнопки за допомогою логічного аналізатора та мікроконтролера - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.5-hw-button-contact-bounce-analyzer
-4. АЦП. Читання даних з Фоторезистора(LDR) - https://github.com/denostapivios/Embeded-ESP32/tree/modul-1.6-hw-adc-photoresistor
-5. Мініпроект. Читання даних з Терморезистора - https://github.com/denostapivios/Embeded-ESP32/tree/modul-mini-project1-hw-termistor
-6. Переписано класичну логіку керування LED у стилі Embedded C++ - https://github.com/denostapivios/Embeded-ESP32/tree/modul-2.1-hw-update-police-flasher
-7. Реалізовано вимірювання часу спрацювання реле - https://github.com/denostapivios/Embeded-ESP32/tree/modul-2.2-hw-relay-module
-8. Використання millis для керування світлодіодами - https://github.com/denostapivios/Embeded-ESP32/tree/modul-2.3-hw-led-millis
+# Світлофор на ESP32
+Реалізовано керування світлофором на ESP32 за допомогою State Machine та ESP-IDF.
+
+Для керування світлодіодами використовується GPIO, а для відстеження часу — esp_timer_get_time(). Логіка реалізована без блокуючого delay(), а перемикання між режимами виконується через enum та switch-case.
+
+**Послідовність перемикання:**
+- **Зелений:** Дозволяє рух.
+- **Зелений миготливий:** Попереджає, що час дії дозволеного сигналу закінчується і скоро буде ввімкнено заборонний сигнал.
+- **Жовтий:** Забороняє рух і попереджає про майбутню зміну сигналів.
+- Ч**ервоний:** Забороняє рух.
+- **Червоний та жовтий одночасно:** Попереджають про наступне ввімкнення зеленого сигналу (рух все ще заборонено).
+
+**Демонстрація:**
+https://youtube.com/shorts/ioZlZuxzAF4?feature=share
